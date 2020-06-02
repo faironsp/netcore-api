@@ -8,21 +8,29 @@ namespace Api.Infra.Data.Mapping
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("User");
+            builder.ToTable("Usuarios");
 
             builder.HasKey(c => c.Id);
 
-            builder.Property(c => c.Cpf)
+            builder.Property(c => c.name)
                 .IsRequired()
-                .HasColumnName("Cpf");
+                .HasColumnName("Nome");
 
-            builder.Property(c => c.BirthDate)
+            builder.Property(c => c.lastname)
                 .IsRequired()
-                .HasColumnName("BirthDate");
+                .HasColumnName("Sobrenome");
 
-            builder.Property(c => c.Name)
+            builder.Property(c => c.email)
                 .IsRequired()
-                .HasColumnName("Name");
+                .HasColumnName("Email");
+
+            builder.Property(c => c.birthdate)
+                .IsRequired()
+                .HasColumnName("DataNascimento");
+
+            builder.Property(c => c.schooling)
+                .IsRequired()
+                .HasColumnName("Escolaridade");
         }
     }
 }

@@ -15,17 +15,35 @@ namespace Api.Service.Validators
                     throw new ArgumentNullException("Can't found the object.");
                 });
 
-            RuleFor(c => c.Cpf)
-                .NotEmpty().WithMessage("Is necessary to inform the CPF.")
-                .NotNull().WithMessage("Is necessary to inform the CPF.");
+            RuleFor(c => c.name)
+                .NotEmpty().WithMessage("O campo nome é obrigatório.")
+                .NotNull().WithMessage("O campo nome é obrigatório.");
 
-            RuleFor(c => c.BirthDate)
-                .NotEmpty().WithMessage("Is necessary to inform the birth date.")
-                .NotNull().WithMessage("Is necessary to inform the birth date.");
+            RuleFor(c => c.lastname)
+                .NotEmpty().WithMessage("O campo sobrenome é obrigatório.")
+                .NotNull().WithMessage("O campo sobrenome é obrigatório.");
 
-            RuleFor(c => c.Name)
-                .NotEmpty().WithMessage("Is necessary to inform the name.")
-                .NotNull().WithMessage("Is necessary to inform the name.");
+            RuleFor(c => c.email)
+                .EmailAddress().WithMessage("O campo e-mail é inválido.")
+                .NotEmpty().WithMessage("O campo e-mail é obrigatório.")
+                .NotNull().WithMessage("O campo e-mail é obrigatório.");
+
+            RuleFor(c => c.birthdate)
+                .NotEmpty().WithMessage("O campo data da nascimento é obrigatório.")
+                .NotNull().WithMessage("O campo data da nascimento é obrigatório.");
+
+            RuleFor(c => c.birthdate)
+                .NotEmpty().WithMessage("O campo data de nascimento deve ser informado")
+                .Must(BirthdateValidator).WithMessage("A data de nascimento não pode ser maior que a data atual");
+
+            RuleFor(c => c.schooling)
+                .NotEmpty().WithMessage("O campo escolaridade é obrigatório.")
+                .NotNull().WithMessage("O campo escolaridade é obrigatório.");
+
+            static bool BirthdateValidator(DateTime birthdate)
+            {
+                return birthdate < DateTime.Now;
+            }
         }
     }
 }
