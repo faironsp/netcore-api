@@ -7,3 +7,4 @@ O objetivo deste projeto é mostrar que é possível criar uma nova arquitetura,
 * FluentValidation.AspNetCore
 * Microsoft.EntityFrameworkCore.Design
 * Microsoft.EntityFrameworkCore.Tools
+* Microsoft.EntityFrameworkCore.SqlServer

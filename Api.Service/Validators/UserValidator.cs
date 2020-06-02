@@ -1,8 +1,6 @@
-﻿using FluentValidation;
-using Api.Domain.Entities;
+﻿using Api.Domain.Entities;
+using FluentValidation;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Api.Service.Validators
 {

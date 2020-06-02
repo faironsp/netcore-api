@@ -1,12 +1,11 @@
 ﻿using Api.Domain.Entities;
 using Api.Service.Services;
+using Api.Service.Validators;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Api.Aplicattion.Controllers
+namespace Api.Application.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -25,20 +24,81 @@ namespace Api.Aplicattion.Controllers
         {
             try
             {
-                List<User> userList = new List<User>();
+                return new ObjectResult(service.Get());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
 
-                for (int i = 0; i < 5; i++)
-                {
-                    var user = new User();
-                    user.Name = $"Fabio: {i}";
-                    user.BirthDate = DateTime.Now;
-                    user.Cpf = "34568868882";
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            try
+            {
+                return new ObjectResult(service.Get(id));
+            }
+            catch (ArgumentException ex)
+            {
+                return NotFound(ex);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
 
-                    userList.Add(user);
-                }
+        [HttpPost]
+        public IActionResult Post([FromBody] User item)
+        {
+            try
+            {
+                service.Post<UserValidator>(item);
 
-                return new ObjectResult(userList);
-                //return new ObjectResult(service.Get());
+                return new ObjectResult(item.Id);
+            }
+            catch (ArgumentNullException ex)
+            {
+                return NotFound(ex);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        [HttpPut]
+        public IActionResult Put([FromBody] User item)
+        {
+            try
+            {
+                service.Put<UserValidator>(item);
+
+                return new ObjectResult(item);
+            }
+            catch (ArgumentNullException ex)
+            {
+                return NotFound(ex);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                service.Delete(id);
+
+                return new NoContentResult();
+            }
+            catch (ArgumentException ex)
+            {
+                return NotFound(ex);
             }
             catch (Exception ex)
             {

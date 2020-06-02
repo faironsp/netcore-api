@@ -1,16 +1,14 @@
 ﻿using Api.Domain.Entities;
 using Api.Domain.Interfaces;
 using Api.Infra.Data.Context;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Api.Infra.Data.Repository
 {
     public class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {
-        private MySqlContext context = new MySqlContext();
+        private SqlContext context = new SqlContext();
 
         public void Insert(T obj)
         {
