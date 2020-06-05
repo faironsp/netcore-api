@@ -24,7 +24,6 @@ namespace Api.Application
                 options.AddPolicy(
                   "CorsPolicy",
                   builder => builder.WithOrigins("http://localhost:4200")
-                  .AllowAnyOrigin()
                   .AllowAnyMethod()
                   .AllowAnyHeader()
                   .AllowCredentials());
