@@ -7,6 +7,9 @@ using System;
 
 namespace Api.Application.Controllers
 {
+    /// <summary>
+    /// Classe controller para Usuários
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class UsersController : ControllerBase
