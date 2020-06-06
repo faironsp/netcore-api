@@ -72,11 +72,12 @@ namespace Api.Application.Controllers
             }
         }
 
-        [HttpPut]
-        public IActionResult Put([FromBody] User item)
+        [HttpPut("{id}")]
+        public IActionResult Put([FromBody] User item, int id)
         {
             try
             {
+                item.Id = id;
                 service.Put<UserValidator>(item);
 
                 return new ObjectResult(item);
