@@ -1,6 +1,7 @@
 ﻿using Api.Domain.Entities;
 using Api.Service.Services;
 using Api.Service.Validators;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,6 +13,8 @@ namespace Api.Application.Controllers
     /// </summary>
     [ApiController]
     [Route("[controller]")]
+    [EnableCors("MyPolicy")]
+
     public class UsersController : ControllerBase
     {
         private BaseService<User> service = new BaseService<User>();
