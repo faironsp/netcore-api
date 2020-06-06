@@ -13,7 +13,7 @@ namespace Api.Application.Controllers
     /// </summary>
     [ApiController]
     [Route("[controller]")]
-    [EnableCors("MyPolicy")]
+    [EnableCors("CorsPolicy")]
 
     public class UsersController : ControllerBase
     {
