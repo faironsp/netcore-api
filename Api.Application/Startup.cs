@@ -28,7 +28,6 @@ namespace Api.Application
                   .AllowAnyHeader()
                   .AllowCredentials());
             });
-
             services.AddAuthentication(IISDefaults.AuthenticationScheme);
 
             services.AddControllers();
