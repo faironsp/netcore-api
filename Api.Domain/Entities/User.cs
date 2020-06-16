@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.Contracts;
 
 namespace Api.Domain.Entities
 {
@@ -13,14 +12,14 @@ namespace Api.Domain.Entities
             Superior = 4
         }
 
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public string lastname { get; set; }
+        public string LastName { get; set; }
 
-        public string email { get; set; }
+        public string Email { get; set; }
 
-        public DateTime birthdate { get; set; }
+        public DateTime Birthdate { get; set; }
 
-        public SchoolLevel schooling { get; set; }
+        public SchoolLevel Schooling { get; set; }
     }
 }
