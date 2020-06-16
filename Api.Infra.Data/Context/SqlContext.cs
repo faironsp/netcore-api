@@ -19,6 +19,19 @@ namespace Api.Infra.Data.Context
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<User>(new UserMap().Configure);
+            modelBuilder.Entity<Acquirer>(new AcquirerMap().Configure);
+            modelBuilder.Entity<AcquirerTax>(new AcquirerTaxMap().Configure);
+            modelBuilder.Entity<Bank>(new BankMap().Configure);
+            modelBuilder.Entity<BankingDomicile>(new BankingDomicileMap().Configure);
+            modelBuilder.Entity<Charge>(new ChargeMap().Configure);
+            modelBuilder.Entity<Customer>(new CustomerMap().Configure);
+            modelBuilder.Entity<CustomerHistory>(new CustomerHistoryMap().Configure);
+            modelBuilder.Entity<Equipment>(new EquipmentMap().Configure);
+            modelBuilder.Entity<Flag>(new FlagMap().Configure);
+            modelBuilder.Entity<Manufacturer>(new ManufacturerMap().Configure);
+            modelBuilder.Entity<Plan>(new PlanMap().Configure);
+            modelBuilder.Entity<Transaction>(new TransactionMap().Configure);
+            modelBuilder.Entity<TransactionInstallment>(new TransactionInstallmentMap().Configure);
         }
     }
 }

@@ -12,23 +12,23 @@ namespace Api.Infra.Data.Mapping
 
             builder.HasKey(c => c.Id);
 
-            builder.Property(c => c.name)
+            builder.Property(c => c.Name)
                 .IsRequired()
                 .HasColumnName("Nome");
 
-            builder.Property(c => c.lastname)
+            builder.Property(c => c.LastName)
                 .IsRequired()
                 .HasColumnName("Sobrenome");
 
-            builder.Property(c => c.email)
+            builder.Property(c => c.Email)
                 .IsRequired()
                 .HasColumnName("Email");
 
-            builder.Property(c => c.birthdate)
+            builder.Property(c => c.Birthdate)
                 .IsRequired()
                 .HasColumnName("DataNascimento");
 
-            builder.Property(c => c.schooling)
+            builder.Property(c => c.Schooling)
                 .IsRequired()
                 .HasColumnName("Escolaridade");
         }
