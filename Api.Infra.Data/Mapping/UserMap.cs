@@ -8,17 +8,17 @@ namespace Api.Infra.Data.Mapping
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("Usuarios");
+            builder.ToTable("Users");
 
             builder.HasKey(c => c.Id);
 
             builder.Property(c => c.Name)
                 .IsRequired()
-                .HasColumnName("Nome");
+                .HasColumnName("Name");
 
             builder.Property(c => c.LastName)
                 .IsRequired()
-                .HasColumnName("Sobrenome");
+                .HasColumnName("LastName");
 
             builder.Property(c => c.Email)
                 .IsRequired()
@@ -26,11 +26,11 @@ namespace Api.Infra.Data.Mapping
 
             builder.Property(c => c.Birthdate)
                 .IsRequired()
-                .HasColumnName("DataNascimento");
+                .HasColumnName("Birthdate");
 
             builder.Property(c => c.Schooling)
                 .IsRequired()
-                .HasColumnName("Escolaridade");
+                .HasColumnName("Schooling");
         }
     }
 }
