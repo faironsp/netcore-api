@@ -32,6 +32,7 @@ namespace Api.Infra.Data.Context
             modelBuilder.Entity<Plan>(new PlanMap().Configure);
             modelBuilder.Entity<Transaction>(new TransactionMap().Configure);
             modelBuilder.Entity<TransactionInstallment>(new TransactionInstallmentMap().Configure);
+            modelBuilder.Entity<Model>(new ModelMap().Configure);
         }
     }
 }

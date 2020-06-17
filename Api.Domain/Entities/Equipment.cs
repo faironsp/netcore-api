@@ -8,7 +8,7 @@
 
         public int IdModel { get; set; }
 
-        public int IsCustomer { get; set; }
+        public int IdCustomer { get; set; }
 
         public string SerialNumber { get; set; }
 

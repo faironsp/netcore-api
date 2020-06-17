@@ -2,6 +2,6 @@
 {
     public class Charge : BaseEntity
     {
-        public byte[] File { get; set; }
+        public byte[] Filebytes { get; set; }
     }
 }

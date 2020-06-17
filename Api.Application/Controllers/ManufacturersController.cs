@@ -12,12 +12,12 @@ namespace Api.Application.Controllers
     /// </summary>
     [ApiController]
     [Route("[controller]")]
-    public class UsersController : ControllerBase
+    public class ManufacturersController : ControllerBase
     {
         private BaseService<User> service = new BaseService<User>();
-        private readonly ILogger<UsersController> _logger;
+        private readonly ILogger<ManufacturersController> _logger;
 
-        public UsersController(ILogger<UsersController> logger)
+        public ManufacturersController(ILogger<ManufacturersController> logger)
         {
             _logger = logger;
         }

@@ -11,13 +11,9 @@
         /// </summary>
         public bool IsSavingsAccount { get; set; } = false;
 
-        public string Agency { get; set; }
-
-        public string AgencyDigit { get; set; }
+        public string AgencyNumber { get; set; }
 
         public string AccountNumber { get; set; }
-
-        public string AccountNumberDigit { get; set; }
 
         /// <summary>
         /// Pessoa Física ou Jurídica
