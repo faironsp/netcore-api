@@ -26,9 +26,7 @@ namespace Api.Application
                   builder => builder.WithOrigins(
                       "http://localhost:4200",
                       "http://app.aprovatto.com.br",
-                      "https://app.aprovatto.com.br",
-                      "http://sys.aprovatto.com.br",
-                      "https://sys.aprovatto.com.br")
+                      "https://app.aprovatto.com.br")
                   .AllowAnyMethod()
                   .AllowAnyHeader()
                   .AllowCredentials());
