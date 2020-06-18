@@ -27,7 +27,7 @@ namespace Api.Application.Controllers.Utils
             {
                 var prestacao = LoanCalculator.CalculaPrestacao(pv, (i / 100), n);
 
-                return new ObjectResult(string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:N}", prestacao));
+                return new ObjectResult(string.Format(CultureInfo.InvariantCulture, "{0:0.00}", prestacao));
             }
             catch (ArgumentException ex)
             {
