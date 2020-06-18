@@ -23,7 +23,7 @@ namespace Api.Application
             {
                 options.AddPolicy(
                   "CorsPolicy",
-                  builder => builder.WithOrigins("http://localhost:4200")
+                  builder => builder.WithOrigins("http://localhost:4200", "http://app.aprovatto.com.br", "https://app.aprovatto.com.br")
                   .AllowAnyMethod()
                   .AllowAnyHeader()
                   .AllowCredentials());
