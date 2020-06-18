@@ -1,6 +1,4 @@
-﻿using Api.Domain.Entities;
-using Api.Service.Validators;
-using Api.Infra.CrossCutting;
+﻿using Api.Infra.CrossCutting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
