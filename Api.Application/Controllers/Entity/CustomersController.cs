@@ -5,19 +5,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace Api.Application.Controllers
+namespace Api.Application.Controllers.Entity
 {
     /// <summary>
     /// Classe controller para Usuários
     /// </summary>
     [ApiController]
     [Route("[controller]")]
-    public class PlansController : ControllerBase
+    public class CustomersController : ControllerBase
     {
         private BaseService<User> service = new BaseService<User>();
-        private readonly ILogger<PlansController> _logger;
+        private readonly ILogger<CustomersController> _logger;
 
-        public PlansController(ILogger<PlansController> logger)
+        public CustomersController(ILogger<CustomersController> logger)
         {
             _logger = logger;
         }
