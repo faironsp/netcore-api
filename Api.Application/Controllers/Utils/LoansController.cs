@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Globalization;
 
 namespace Api.Application.Controllers.Utils
 {
@@ -26,7 +27,7 @@ namespace Api.Application.Controllers.Utils
             {
                 var prestacao = LoanCalculator.CalculaPrestacao(pv, (i / 100), n);
 
-                return new ObjectResult(prestacao);
+                return new ObjectResult(string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:N}", prestacao));
             }
             catch (ArgumentException ex)
             {
@@ -37,6 +38,5 @@ namespace Api.Application.Controllers.Utils
                 return BadRequest(ex);
             }
         }
-
     }
 }
