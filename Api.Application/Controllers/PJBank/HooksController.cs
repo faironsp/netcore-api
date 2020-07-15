@@ -54,43 +54,57 @@ namespace Api.Application.Controllers.PJBank
         [HttpPut("{instanceName}")]
         public IActionResult Hooks(string instanceName, [FromBody] PjBank content)
         {
-            var path = Path.Combine(_env.ContentRootPath, "Data", "Hooks.db");
-
-            // Open database (or create if doesn't exist)
-            using (var db = new LiteDatabase(path))
+            try
             {
-                // Get a collection (or create, if doesn't exist)
-                var col = db.GetCollection<Hooks>("Hooks");
+                var path = Path.Combine(_env.ContentRootPath, "Data", "Hooks.db");
 
-                var hooks = new Hooks
+                // Open database (or create if doesn't exist)
+                using (var db = new LiteDatabase(path))
                 {
-                    Id = Guid.NewGuid().ToString(),
-                    instanceName = instanceName,
-                    PjBankContent = content
-                };
+                    // Get a collection (or create, if doesn't exist)
+                    var col = db.GetCollection<Hooks>("Hooks");
 
-                // Insert new customer document (Id will be auto-incremented)
-                col.Insert(hooks);
+                    var hooks = new Hooks
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        instanceName = instanceName,
+                        PjBankContent = content
+                    };
+
+                    // Insert new customer document (Id will be auto-incremented)
+                    col.Insert(hooks);
+                }
+
+                //Dá um ok na requisição
+                PjBankReturn pjBankReturn = new PjBankReturn() { status = 200 };
+
+                return Ok(pjBankReturn);
             }
-
-            //Dá um ok na requisição
-            PjBankReturn pjBankReturn = new PjBankReturn() { status = 200 };
-
-            return Ok(pjBankReturn);
+            catch (Exception ex)
+            {
+                return new ObjectResult(ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            var path = Path.Combine(_env.ContentRootPath, "Data", "Hooks.db");
-
-            // Open database (or create if doesn't exist)
-            using (var db = new LiteDatabase(path))
+            try
             {
-                // Get a collection (or create, if doesn't exist)
-                var col = db.GetCollection<Hooks>("Hooks");
+                var path = Path.Combine(_env.ContentRootPath, "Data", "Hooks.db");
 
-                return Ok(col.Delete(id));
+                // Open database (or create if doesn't exist)
+                using (var db = new LiteDatabase(path))
+                {
+                    // Get a collection (or create, if doesn't exist)
+                    var col = db.GetCollection<Hooks>("Hooks");
+
+                    return Ok(col.Delete(id));
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ObjectResult(ex.Message);
             }
         }
     }
