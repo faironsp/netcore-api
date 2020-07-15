@@ -19,7 +19,7 @@ namespace Api.Application.Controllers.PJBank
     {
         private readonly ILogger<HooksController> _logger;
         private readonly IWebHostEnvironment _env;
-        private LiteDatabase _db = new LiteDatabase("Filename=PJBank.db;Mode=Shared");
+        private static LiteDatabase _db = new LiteDatabase("Filename=Hooks.db;Mode=Shared");
 
         public HooksController(ILogger<HooksController> logger, IWebHostEnvironment env)
         {
@@ -83,7 +83,7 @@ namespace Api.Application.Controllers.PJBank
             try
             {
                 // Get a collection (or create, if doesn't exist)
-                var col = db.GetCollection<Hooks>("Hooks");
+                var col = _db.GetCollection<Hooks>("Hooks");
 
                 return Ok(col.Delete(id));
             }

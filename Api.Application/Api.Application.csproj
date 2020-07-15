@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="PJBank-log.db" />
     <None Remove="PJBank.db" />
   </ItemGroup>
 
