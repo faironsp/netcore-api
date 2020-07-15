@@ -38,7 +38,7 @@ namespace Api.Application.Controllers.PJBank
                 var col = _db.GetCollection<Hooks>("Hooks");
 
                 // Use LINQ to query documents (filter, sort, transform)
-                var results = col.Query().ToList();
+                var results = col.Query().OrderBy(x => x.CreatedAt).ToList();
 
                 return Ok(results);
             }
