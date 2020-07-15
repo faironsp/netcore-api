@@ -54,10 +54,8 @@ namespace Api.Application.Controllers.PJBank
         {
             try
             {
-                var path = Path.Combine(_env.ContentRootPath, "Data", "Hooks.db");
-
                 // Open database (or create if doesn't exist)
-                using (var db = new LiteDatabase(path))
+                using (var db = new LiteDatabase("Filename=PJBank.db;Mode=Shared"))
                 {
                     // Get a collection (or create, if doesn't exist)
                     var col = db.GetCollection<Hooks>("Hooks");
@@ -89,10 +87,8 @@ namespace Api.Application.Controllers.PJBank
         {
             try
             {
-                var path = Path.Combine(_env.ContentRootPath, "Data", "Hooks.db");
-
                 // Open database (or create if doesn't exist)
-                using (var db = new LiteDatabase(path))
+                using (var db = new LiteDatabase("Filename=PJBank.db;Mode=Shared"))
                 {
                     // Get a collection (or create, if doesn't exist)
                     var col = db.GetCollection<Hooks>("Hooks");
