@@ -1,9 +1,9 @@
 ﻿using Api.Application.Controllers.PJBank.Models;
 using Api.Domain.Entities;
-using Api.Service.Services;
 using LiteDB;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
@@ -29,18 +29,25 @@ namespace Api.Application.Controllers.PJBank
         [HttpGet]
         public IActionResult GetAll()
         {
-            var path = Path.Combine(_env.ContentRootPath, "Data", "Hooks.db");
-
-            // Open database (or create if doesn't exist)
-            using (var db = new LiteDatabase(path))
+            try
             {
-                // Get a collection (or create, if doesn't exist)
-                var col = db.GetCollection<Hooks>("Hooks");
+                var path = Path.Combine(_env.ContentRootPath, "Data", "Hooks.db");
 
-                // Use LINQ to query documents (filter, sort, transform)
-                var results = col.Query().ToList();
+                // Open database (or create if doesn't exist)
+                using (var db = new LiteDatabase(path))
+                {
+                    // Get a collection (or create, if doesn't exist)
+                    var col = db.GetCollection<Hooks>("Hooks");
 
-                return Ok(results);
+                    // Use LINQ to query documents (filter, sort, transform)
+                    var results = col.Query().ToList();
+
+                    return Ok(results);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ObjectResult(ex.Message);
             }
         }
 
