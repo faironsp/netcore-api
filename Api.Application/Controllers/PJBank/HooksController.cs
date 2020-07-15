@@ -19,11 +19,14 @@ namespace Api.Application.Controllers.PJBank
     {
         private readonly ILogger<HooksController> _logger;
         private readonly IWebHostEnvironment _env;
+        private LiteDatabase _db = new LiteDatabase("Filename=PJBank.db;Mode=Shared");
 
         public HooksController(ILogger<HooksController> logger, IWebHostEnvironment env)
         {
             _logger = logger;
             _env = env;
+
+            //_db = new LiteDatabase("Filename=PJBank.db;Mode=Shared");
         }
 
         [HttpGet]
@@ -31,17 +34,13 @@ namespace Api.Application.Controllers.PJBank
         {
             try
             {
-                // Open database (or create if doesn't exist)
-                using (var db = new LiteDatabase("Filename=PJBank.db;Mode=Shared"))
-                {
-                    // Get a collection (or create, if doesn't exist)
-                    var col = db.GetCollection<Hooks>("Hooks");
+                // Get a collection (or create, if doesn't exist)
+                var col = _db.GetCollection<Hooks>("Hooks");
 
-                    // Use LINQ to query documents (filter, sort, transform)
-                    var results = col.Query().ToList();
+                // Use LINQ to query documents (filter, sort, transform)
+                var results = col.Query().ToList();
 
-                    return Ok(results);
-                }
+                return Ok(results);
             }
             catch (Exception ex)
             {
@@ -54,22 +53,18 @@ namespace Api.Application.Controllers.PJBank
         {
             try
             {
-                // Open database (or create if doesn't exist)
-                using (var db = new LiteDatabase("Filename=PJBank.db;Mode=Shared"))
+                // Get a collection (or create, if doesn't exist)
+                var col = _db.GetCollection<Hooks>("Hooks");
+
+                var hooks = new Hooks
                 {
-                    // Get a collection (or create, if doesn't exist)
-                    var col = db.GetCollection<Hooks>("Hooks");
+                    Id = Guid.NewGuid().ToString(),
+                    instanceName = instanceName,
+                    PjBankContent = content
+                };
 
-                    var hooks = new Hooks
-                    {
-                        Id = Guid.NewGuid().ToString(),
-                        instanceName = instanceName,
-                        PjBankContent = content
-                    };
-
-                    // Insert new customer document (Id will be auto-incremented)
-                    col.Insert(hooks);
-                }
+                // Insert new customer document (Id will be auto-incremented)
+                col.Insert(hooks);
 
                 //Dá um ok na requisição
                 PjBankReturn pjBankReturn = new PjBankReturn() { status = 200 };
@@ -87,14 +82,10 @@ namespace Api.Application.Controllers.PJBank
         {
             try
             {
-                // Open database (or create if doesn't exist)
-                using (var db = new LiteDatabase("Filename=PJBank.db;Mode=Shared"))
-                {
-                    // Get a collection (or create, if doesn't exist)
-                    var col = db.GetCollection<Hooks>("Hooks");
+                // Get a collection (or create, if doesn't exist)
+                var col = db.GetCollection<Hooks>("Hooks");
 
-                    return Ok(col.Delete(id));
-                }
+                return Ok(col.Delete(id));
             }
             catch (Exception ex)
             {
