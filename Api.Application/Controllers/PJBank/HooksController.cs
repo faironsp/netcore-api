@@ -60,7 +60,8 @@ namespace Api.Application.Controllers.PJBank
                 {
                     Id = Guid.NewGuid().ToString(),
                     instanceName = instanceName,
-                    PjBankContent = content
+                    PjBankContent = content,
+                    CreatedAt = DateTime.Now
                 };
 
                 // Insert new customer document (Id will be auto-incremented)

@@ -1,4 +1,6 @@
-﻿namespace Api.Application.Controllers.PJBank.Models
+﻿using System;
+
+namespace Api.Application.Controllers.PJBank.Models
 {
     public class Hooks
     {
@@ -7,5 +9,7 @@
         public string instanceName { get; set; }
 
         public PjBank PjBankContent { get; set; }
+
+        public DateTime CreatedAt { get; set; }
     }
 }
