@@ -31,7 +31,6 @@ namespace Api.Application
                       "https://www.pjbank.com.br",
                       "https://*.pjbank.com.br")
                   .AllowAnyMethod()
-                  .AllowAnyOrigin()
                   .AllowAnyHeader()
                   .AllowCredentials());
             });
