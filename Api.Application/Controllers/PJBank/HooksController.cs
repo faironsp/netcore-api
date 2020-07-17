@@ -1,7 +1,6 @@
 ﻿using Api.Application.Controllers.PJBank.Models;
 using Api.Domain.Entities;
 using LiteDB;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -31,7 +30,6 @@ namespace Api.Application.Controllers.PJBank
         }
 
         [HttpGet]
-        [DisableCors]
         public IActionResult GetAll()
         {
             try
@@ -51,7 +49,6 @@ namespace Api.Application.Controllers.PJBank
         }
 
         [HttpPut("{instanceName}")]
-        [DisableCors]
         public IActionResult Hooks(string instanceName, [FromBody] PjBank content)
         {
             try
@@ -82,7 +79,6 @@ namespace Api.Application.Controllers.PJBank
         }
 
         [HttpDelete("{id}")]
-        [DisableCors]
         public IActionResult Delete(string id)
         {
             try
