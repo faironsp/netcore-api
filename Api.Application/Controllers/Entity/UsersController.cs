@@ -1,6 +1,7 @@
 ﻿using Api.Domain.Entities;
 using Api.Service.Services;
 using Api.Service.Validators;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,6 +13,7 @@ namespace Api.Application.Controllers.Entity
     /// </summary>
     [ApiController]
     [Route("[controller]")]
+    [DisableCors]
     public class UsersController : ControllerBase
     {
         private BaseService<User> service = new BaseService<User>();
@@ -23,6 +25,7 @@ namespace Api.Application.Controllers.Entity
         }
 
         [HttpGet]
+        [DisableCors]
         public IActionResult Get()
         {
             try
@@ -36,6 +39,7 @@ namespace Api.Application.Controllers.Entity
         }
 
         [HttpGet("{id}")]
+        [DisableCors]
         public IActionResult Get(int id)
         {
             try
@@ -53,6 +57,7 @@ namespace Api.Application.Controllers.Entity
         }
 
         [HttpPost]
+        [DisableCors]
         public IActionResult Post([FromBody] User item)
         {
             try
@@ -72,6 +77,7 @@ namespace Api.Application.Controllers.Entity
         }
 
         [HttpPut("{id}")]
+        [DisableCors]
         public IActionResult Put([FromBody] User item, int id)
         {
             try
@@ -92,6 +98,7 @@ namespace Api.Application.Controllers.Entity
         }
 
         [HttpDelete("{id}")]
+        [DisableCors]
         public IActionResult Delete(int id)
         {
             try
