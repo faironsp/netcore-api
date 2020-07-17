@@ -19,20 +19,21 @@ namespace Api.Application
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy(
-            //      "CorsPolicy",
-            //      builder => builder.WithOrigins(
-            //          "http://localhost:4200",
-            //          "http://app.aprovatto.com.br",
-            //          "https://app.aprovatto.com.br",
-            //          "https://pjbank.com.br",
-            //          "https://www.pjbank.com.br")
-            //      .AllowAnyMethod()
-            //      .AllowAnyHeader()
-            //      .AllowCredentials());
-            //});
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                  "CorsPolicy",
+                  builder => builder.WithOrigins(
+                      "http://localhost:4200",
+                      "http://app.aprovatto.com.br",
+                      "https://app.aprovatto.com.br",
+                      "https://pjbank.com.br",
+                      "https://www.pjbank.com.br",
+                      "https://*.pjbank.com.br")
+                  .AllowAnyMethod()
+                  .AllowAnyHeader()
+                  .AllowCredentials());
+            });
 
             services.AddAuthentication(IISDefaults.AuthenticationScheme);
 
@@ -47,7 +48,7 @@ namespace Api.Application
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseCors("CorsPolicy");
+            app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();
 
